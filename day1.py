@@ -14,7 +14,7 @@ depths = [int(d) for d in DATA.splitlines()]
 # visualize the depth map
 viz = Map(["~"*x for x in depths])
 viz.setcolour("~",(0,128,128))
-img = viz.img.resize((viz.img.width//100, viz.img.height//20))
+img = viz.img.resize((100, 100))
 img = img.transpose(PIL.Image.TRANSPOSE)
 img.save(Path(__file__).parent / 'output' / 'day1.png')
 
