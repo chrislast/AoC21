@@ -22,7 +22,7 @@ $ py day<n>.py
 
 Day | Part | Notes
 --- | ---- | -----
-1   | both | The expected couple of python generators to solve a trivial data problem
+[day1](./day1.py) | both | The expected couple of python generators to solve a trivial data problem
 <!--
 x|y| ![Image Title](./images/day20p1.png)
 *|-| [bookmark](https://github.com/chrislast)
