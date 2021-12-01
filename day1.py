@@ -1,6 +1,8 @@
 # import our helpers
-from utils import load, show, day
+from utils import load, show, day, Map, TRACE
 import yaml
+import PIL
+from pathlib import Path
 ####### GLOBALS #########
 
 # load todays input data as a docstring
@@ -8,6 +10,13 @@ DATA = load(day(__file__))
 
 # parse the input
 depths = [int(d) for d in DATA.splitlines()]
+
+# visualize the depth map
+viz = Map(["~"*x for x in depths])
+viz.setcolour("~",(0,128,128))
+img = viz.img.resize((viz.img.width//100, viz.img.height//20))
+img = img.transpose(PIL.Image.TRANSPOSE)
+img.save(Path(__file__).parent / 'output' / 'day1.png')
 
 ######## Part 1 ##########
 def p1(expect=1655):

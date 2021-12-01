@@ -20,9 +20,9 @@ $ py day<n>.py
 
 ## Key Lessons
 
-Day | Part | Notes
---- | ---- | -----
-[day1](./day1.py) | both | The expected couple of python generators to solve a trivial data problem
+Day | Part | Visualisation | Notes
+--- | ---- | ------------- | -----
+[day1](./day1.py) | both | ![Depth Map](./output/day1.png) | The expected couple of python generators to solve a trivial data problem
 <!--
 x|y| ![Image Title](./images/day20p1.png)
 *|-| [bookmark](https://github.com/chrislast)
