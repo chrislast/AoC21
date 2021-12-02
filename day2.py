@@ -1,5 +1,5 @@
 # import our helpers
-from utils import load, show, day, TRACE, Map
+from utils import load, show, day, TRACE, Map, Path
 
 ####### GLOBALS #########
 
@@ -10,14 +10,17 @@ DATA = load(day(__file__))
 PARSED = DATA.splitlines()
 
 ######## Part 1 ##########
-def p1(expect=None):
+def p1(expect=1868935):
     forward = sum([int(_[8:]) for _ in PARSED if _.startswith('forward ')])
-    up = sum([int(_[3:]) for _ in PARSED if _.startswith('up ')])
-    down = sum([int(_[5:]) for _ in PARSED if _.startswith('down ')])
+    up      = sum([int(_[3:]) for _ in PARSED if _.startswith('up ')])
+    down    = sum([int(_[5:]) for _ in PARSED if _.startswith('down ')])
     return forward * (down - up)
 
+def p3():
+    pass
+
 ######## Part 2 ##########
-def p2(expect=None):
+def p2(expect=1965970888, viz=None):
     depth = hpos = aim = 0
     for step in PARSED:
         if step.startswith("forward "):
@@ -30,8 +33,16 @@ def p2(expect=None):
         if step.startswith("down "):
             n = int(step[5:])
             aim += n
+        if viz:
+            viz.set((hpos//20, depth//10046), '#')
     return hpos * depth
 
+def vizp2():
+    # visualize the depth map
+    viz = Map([" "*100]*100)
+    viz.setcolour("#",(255,255,0))
+    p2(viz=viz)
+    viz.save(Path(__file__).parent / 'output' / 'day2b.png')
 
 ######### Main ###########
 def main():
@@ -39,3 +50,4 @@ def main():
 
 if __name__ == "__main__":
     main()
+    vizp2()
