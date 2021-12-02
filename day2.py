@@ -42,7 +42,7 @@ def vizp2():
     viz = Map([" "*100]*100)
     viz.setcolour("#",(255,255,0))
     p2(viz=viz)
-    viz.save(Path(__file__).parent / 'output' / 'day2b.png')
+    viz.img.save(Path(__file__).parent / 'output' / 'day2b.png')
 
 ######### Main ###########
 def main():
