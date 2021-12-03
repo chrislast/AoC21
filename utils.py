@@ -14,11 +14,11 @@ class Map:
     m.show()
     """
     def __init__(self, data, colorseed=0):
-        self.height = len(data)
-        self.width = max([len(_) for _ in data])
-        self.img = Image.new("P", (self.width,self.height))
-        for y in range(self.height):
-            for x in range(self.width):
+        height = len(data)
+        width = max([len(_) for _ in data])
+        self.img = Image.new("P", (width,height))
+        for y in range(height):
+            for x in range(width):
                 try:
                     self.set((x,y),data[y][x])
                 except IndexError:
@@ -41,10 +41,13 @@ class Map:
         else:
             raise ValueError(f"{val}")
 
-    def set(self, pos, val):
+    def set(self, pos, val, out_of_range_is_error=True):
         """set pixel accepts int, bool, char"""
         val = self.ival(val)
-        self.img.putpixel(pos,val)
+        x, y = pos
+        sx, sy = self.img.size
+        if out_of_range_is_error or x<sx and y<sy:
+            self.img.putpixel(pos,val)
 
     def get(self, pos):
         """get *integer* value
@@ -86,6 +89,25 @@ class Map:
 
     def savegif(self, fname):
         self.gif[0].save(fname, append_images=self.gif[1:], save_all=True, duration=100, loop=1, palette=self.palette, optimize=True)
+
+        ##
+        #
+     #######
+    ## # # ##
+     #######
+
+    SUBMARINE = [(0, -2), (1, -2), (0, -1), (-4, 1), (4, 1), # periscope and ends
+                 *[(_,0) for _ in range(-3, 4)], # roof
+                 *[(_,1) for _ in range(-3, 4, 2)], # walls
+                 *[(_,2) for _ in range(-3, 4)]] # floor
+    SUBMARINE_WINDOWS = [(-2, 1), (0, 1), (2, 1)]
+
+    def add_a_submarine(self, x, y, body='@'):
+        self.setcolour(body, (255,255,0)) # yellow (obviously)
+        for sx, sy in self.SUBMARINE:
+            self.set((x+sx,y+sy), body, out_of_range_is_error=False)
+        for sx, sy in self.SUBMARINE_WINDOWS:
+            self.set((x+sx,y+sy), 0, out_of_range_is_error=False)
 
 ALPHA = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
 

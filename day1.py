@@ -13,11 +13,13 @@ depths = [int(d) for d in DATA.splitlines()]
 
 def viz():
     # visualize the depth map
-    viz = Map(["~"*x for x in depths])
+    div = max(depths)//100 + 1
+    viz = Map(["~"*(x//div) for x in depths])
     viz.setcolour("~",(0,128,128))
-    img = viz.img.resize((100, 100))
-    img = img.transpose(PIL.Image.TRANSPOSE)
-    img.save(Path(__file__).parent / 'output' / 'day1.png')
+    viz.img = viz.img.resize((100, 100))
+    viz.img = viz.img.transpose(PIL.Image.TRANSPOSE)
+    viz.add_a_submarine(15,5)
+    viz.img.save(Path(__file__).parent / 'output' / 'day1.png')
 
 ######## Part 1 ##########
 def p1(expect=1655):

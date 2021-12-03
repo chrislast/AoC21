@@ -16,15 +16,17 @@ $ py day<n>.py
 
 ## Notes
 
+* An objective this year is to provide visualizations for all solutions using PIL (png/gif) and matplotlib
 * [utils.py](./utils.py) - contains general purpose helper functions and test functions
 
-## Key Lessons
+## Diary
 
 Day | Part | Visualisation | Difficulty | Notes
 --- | ---- | ------------- | ---------- | -----
 day1 [🌐](https://adventofcode.com/2021/day/1)[💾](./day1.py)    | both | ![Depth Map](./output/day1.png)   | 1 | The expected couple of python generators to solve a trivial data problem
 day2 [🌐](https://adventofcode.com/2021/day/2)[💾](./day2.py)    | both | ![Going Down](./output/day2b.png) | 1 | parse text input and process
-day3 [🌐](https://adventofcode.com/2021/day/3)[💾](./day3.py)    |      |                                   |   | 
+day3 [🌐](https://adventofcode.com/2021/day/3)[💾](./day3.py)    |  1   |                                   | 2 | collections.Counter is very useful
+day3 [🌐](https://adventofcode.com/2021/day/3)[💾](./day3.py)    |  2   |                                   | 3 | Read carefully and recalculate counter after each filter!
 day4 [🌐](https://adventofcode.com/2021/day/4)[💾](./day4.py)    |      |                                   |   | 
 day5 [🌐](https://adventofcode.com/2021/day/5)[💾](./day5.py)    |      |                                   |   | 
 day6 [🌐](https://adventofcode.com/2021/day/6)[💾](./day6.py)    |      |                                   |   | 

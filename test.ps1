@@ -1,6 +1,6 @@
 $SCRIPT_DIR=$PSScriptRoot
 $VENV="pyenv38"
-$required_packages="pyyaml", "pillow"
+$required_packages="pyyaml", "pillow", "matplotlib"
 $_update=$args[0]
 $ErrorActionPreference = "Stop"
 
