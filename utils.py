@@ -13,7 +13,7 @@ class Map:
     m = Map(DATA)
     m.show()
     """
-    def __init__(self, data, colorseed=0):
+    def __init__(self, data, colorseed=0, output_size=None):
         height = len(data)
         width = max([len(_) for _ in data])
         self.img = Image.new("P", (width,height))
@@ -28,6 +28,7 @@ class Map:
         self.palette=[0,0,0] + [255,255,255] + [random.randint(0,255) for _ in range(254*3)]
         self.img.putpalette(self.palette)
         self.gif = []
+        self.output_size = output_size
         self.addtogif()
 
     def ival(self, val):
@@ -55,11 +56,13 @@ class Map:
         return self.img.getpixel(pos)
 
     def resized(self):
-        x,y = self.img.size
-        while x<=200 and y<=200:
-            x*=2
-            y*=2
-        return self.img.copy().resize((x,y))
+        if not self.output_size:
+            x,y = self.img.size
+            while x<=200 and y<=200:
+                x*=2
+                y*=2
+            self.output_size = (x,y)
+        return self.img.copy().resize(self.output_size)
 
     def show(self):
         """show the PIL image"""

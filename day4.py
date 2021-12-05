@@ -10,15 +10,12 @@ DATA = load(day(__file__))
 PARSED = DATA.splitlines()
 NUMBERS = list(map(int,PARSED[0].split(",")))
 CARDS = [PARSED[n:n+5] for n in range(2, len(PARSED), 6)]
-MAP = Map([list(map(int,' '.join(x).split())) for x in CARDS])
+MAP = Map([list(map(int,' '.join(x).split())) for x in CARDS], output_size=(100,100))
 MAP.setcolour(255,(0,0,0))
-MAP2 = Map([list(map(int,' '.join(x).split())) for x in CARDS])
-MAP2.setcolour(255,(0,0,0))
 
 ######## Part 1 ##########
 def p1(expect=6592, viz=None):
     data = list(MAP.img.getdata())
-    MAP.setcolour(255,(0,0,0))
 
     for num in NUMBERS:
         # remove each number from all cards
@@ -40,7 +37,7 @@ def p1(expect=6592, viz=None):
 
 ######## Part 2 ##########
 def p2(expect=31755, viz=None):
-    data = list(MAP2.img.getdata())
+    data = list(MAP.img.getdata())
     unwon=set(range(len(data)//25))
 
     for num in NUMBERS:
@@ -50,8 +47,8 @@ def p2(expect=31755, viz=None):
                 data[idx] = 255
 
         if viz:
-            MAP2.img.putdata(data)
-            MAP2.addtogif()
+            MAP.img.putdata(data)
+            MAP.addtogif()
 
         for cidx in unwon.copy():
             card = data[cidx*25:cidx*25+25]
@@ -69,15 +66,8 @@ def main():
     show(p1, p2)
 
 if __name__ == "__main__":
-    from PIL import Image
+    main()
     p1(viz=True)
-    gif = Path(__file__).parent / 'output' / 'day4a.gif'
-    for idx, _ in enumerate(MAP.gif):
-        MAP.gif[idx] = _.resize((100,100))
-    MAP.savegif(gif)
-
+    MAP.savegif(Path(__file__).parent / 'output' / 'day4a.gif')
     p2(viz=True)
-    gif = Path(__file__).parent / 'output' / 'day4b.gif'
-    for idx, _ in enumerate(MAP2.gif):
-        MAP2.gif[idx] = _.resize((100,100))
-    MAP2.savegif(gif)
+    MAP.savegif(Path(__file__).parent / 'output' / 'day4b.gif')
