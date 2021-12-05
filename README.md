@@ -27,7 +27,8 @@ day1 [🌐](https://adventofcode.com/2021/day/1)[💾](./day1.py)    | both | ![
 day2 [🌐](https://adventofcode.com/2021/day/2)[💾](./day2.py)    | both | ![Going Down](./output/day2b.png)                  | 1/10 | parse text input and process
 day3 [🌐](https://adventofcode.com/2021/day/3)[💾](./day3.py)    | 1    | [![](./output/day3athumb.png)](./output/day3a.png) | 2/10 | collections.Counter is very useful
 day3 [🌐](https://adventofcode.com/2021/day/3)[💾](./day3.py)    | 2    | [![](./output/day3bthumb.png)](./output/day3b.png) | 3/10 | Read carefully and recalculate counter after each filter!
-day4 [🌐](https://adventofcode.com/2021/day/4)[💾](./day4.py)    |      |  |  | 
+day4 [🌐](https://adventofcode.com/2021/day/4)[💾](./day4.py)    | 1    | ![First Winner](./output/day4a.gif) | 4/10 | uses [x::n] slice notation for bingo card column check
+day4 [🌐](https://adventofcode.com/2021/day/4)[💾](./day4.py)    | 2    | ![Last Winner](./output/day4b.gif)  | 3/10 | slight change to part1 only
 day5 [🌐](https://adventofcode.com/2021/day/5)[💾](./day5.py)    |      |  |  | 
 day6 [🌐](https://adventofcode.com/2021/day/6)[💾](./day6.py)    |      |  |  | 
 day7 [🌐](https://adventofcode.com/2021/day/7)[💾](./day7.py)    |      |  |  | 
