@@ -43,6 +43,18 @@ def p2(expect=1632146183902, viz=None):
         viz(population)
     return sum(population[-1].values())
 
+# This would have been even neater if I'd thought of it although no quicker
+# rotating and cleaning the array using list.pop(index) is one to remember
+
+#     school = [0] * 9
+#     for i in PARSED:
+#         school[int(i)] += 1
+#     for i in range(256):
+#         new_fish = school.pop(0)
+#         school.append(new_fish)
+#         school[6] += new_fish
+#     print(sum(school))
+
 ######### Main ###########
 def main():
     show(p1, p2)
