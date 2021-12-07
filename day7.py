@@ -13,7 +13,7 @@ DATA = load(day(__file__))
 PARSED = DATA.split(',')
 
 ######## Part 1 ##########
-def p1(expect=360268, viz=None):
+def p1(expect=349812, viz=None):
     data = dict(Counter(map(int, PARSED)))
     fuel = 0
     while len(data) > 1:
@@ -41,5 +41,5 @@ def main():
 
 if __name__ == "__main__":
     main()
-    p1(viz=viz1)
-    p2(viz=viz2)
+    #p1(viz=viz1)
+    #p2(viz=viz2)
