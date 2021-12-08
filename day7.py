@@ -39,11 +39,13 @@ def fuelcalc(crabs, pos):
 
 def p2(expect=99763899, viz=None):
     scatter = []
-    data = dict(Counter(map(int, PARSED)))
+    ints = list(map(int, PARSED))
+    data = dict(Counter(ints))
     imax = max(data)
     imin = min(data)
     iguess = (imax + imin) // 2
-    newval = 0
+    iguess = sorted(ints)[len(ints)//2]
+    newval = 999999999999
     while True:
         oldval = newval
         newval = fuelcalc(data, iguess)
