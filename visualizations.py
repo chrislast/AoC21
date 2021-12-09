@@ -1,6 +1,7 @@
 from utils import load, show, day, TRACE, Map, Path
 from PIL import Image
 from matplotlib import pyplot as plt
+import numpy as np
 
 
 def viz1(depths):
@@ -139,6 +140,22 @@ def viz9a(func, seafloor):
     func(viz=True)
     seafloor.img.resize((100,100)).save(Path(__file__).parent / 'output' / 'day9athumb.png')
     seafloor.save(Path(__file__).parent / 'output' / 'day9a.png')
+
+    w, h = seafloor.img.size
+    x = np.array([x for y in range(h) for x in range(w)]).reshape(w,h)
+    y = np.array([y for y in range(h) for x in range(w)]).reshape(w,h)
+    z = np.array([_-48 for _ in seafloor.img.getdata()]).reshape(w,h)
+    fig, ax = plt.subplots(subplot_kw=dict(projection='3d'))
+    ax.plot_surface(x, y, z)
+    ax.set_axis_off()
+    ax.set(zlim=[-100, 100])
+    fig.set_tight_layout(True)
+    full = Path(__file__).parent / 'output' / 'day9a2.png'
+    fig.savefig(full, dpi=200)
+    img = Image.open(full)
+    cropped = img.crop((290,280,1000,650))
+    cropped.save(Path(__file__).parent / 'output' / 'day9a2.png')
+    cropped.resize((100,52)).save(Path(__file__).parent / 'output' / 'day9a2thumb.png')
 
 def viz9b(func, seafloor):
     seafloor.setcolour(255, (0, 255, 255))
