@@ -90,8 +90,8 @@ class Map:
     def addtogif(self):
         self.gif.append(self.resized())
 
-    def savegif(self, fname):
-        self.gif[0].save(fname, append_images=self.gif[1:], save_all=True, duration=100, loop=1, palette=self.palette, optimize=True)
+    def savegif(self, fname, *, duration=100, loop=1, optimize=True, save_all=True):
+        self.gif[0].save(fname, append_images=self.gif[1:], save_all=save_all, duration=duration, loop=loop, palette=self.palette, optimize=optimize)
 
         ##
         #
