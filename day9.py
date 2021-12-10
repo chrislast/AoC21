@@ -4,10 +4,10 @@ from utils import load, show, day, TRACE, Map, Path
 ####### GLOBALS #########
 
 # load todays input data as a docstring
-DATA = load(day(__file__))
+DATA = load(day(__file__)).splitlines()
 
 # parse the input
-MAP = Map(DATA.splitlines())
+MAP = Map(DATA)
 
 ######## Part 1 ##########
 def p1(expect=439, viz=None):
@@ -66,7 +66,7 @@ def main():
 if __name__ == "__main__":
     main()
     # reset MAP to create visualizations
-    MAP = Map(DATA.splitlines())
+    MAP = Map(DATA)
     print("Creating visualizations takes ~30 seconds")
     from visualizations import viz9a, viz9b
     viz9a(p1, MAP)

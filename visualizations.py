@@ -2,7 +2,7 @@ from utils import load, show, day, TRACE, Map, Path
 from PIL import Image
 from matplotlib import pyplot as plt
 import numpy as np
-
+from collections import Counter
 
 def viz1(depths):
     # visualize the depth map
@@ -10,11 +10,11 @@ def viz1(depths):
     viz = Map(["~"*(x//div) for x in depths])
     viz.setcolour("~",(0,128,128))
     viz.img = viz.img.resize((100, 100))
-    viz.img = viz.img.transpose(PIL.Image.TRANSPOSE)
+    viz.img = viz.img.transpose(Image.TRANSPOSE)
     viz.add_a_submarine(15,5)
     viz.img.save(Path(__file__).parent / 'output' / 'day1.png')
 
-def viz2(tracker):
+def viz2b(tracker):
     # visualize the depth map
     viz = Map([" "*100]*100)
     viz.setcolour("#",(255,255,0))

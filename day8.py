@@ -1,16 +1,13 @@
 # import our helpers
-from utils import load, show, day, TRACE, Map, Path
-#from collections import Counter
-#from PIL import Image
-#from matplotlib import pyplot as plt
+from utils import load, show, day, TRACE, Map
 
 ####### GLOBALS #########
 
 # load todays input data as a docstring
-DATA = load(day(__file__))
+DATA = load(day(__file__)).splitlines()
 
 # parse the input
-PARSED = [_.split() for _ in DATA.splitlines()]
+PARSED = [_.split() for _ in DATA]
 
 ######## Part 1 ##########
 def p1(expect=514, viz=None):
@@ -78,4 +75,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-

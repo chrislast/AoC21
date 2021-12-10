@@ -1,19 +1,16 @@
 # import our helpers
-from utils import load, show, day, TRACE, Map, Path
+from utils import load, show, day, TRACE, Map
 from collections import Counter
 
 ####### GLOBALS #########
 
 # load todays input data as a docstring
-DATA = load(day(__file__))
-
-# parse the input
-PARSED = DATA.splitlines()
+DATA = load(day(__file__)).splitlines()
 
 ######## Part 1 ##########
 def mapper(diagonals=False):
     sea = Map([[0]*1000]*1000)
-    for line in PARSED:
+    for line in DATA:
         start, stop = line.split()[::2]
         x1, y1 = map(int,start.split(","))
         x2, y2 = map(int,stop.split(","))
@@ -43,8 +40,7 @@ def p1(expect=5698, viz=None):
     count.pop(0)
     count.pop(1)
     if viz:
-        sea.save(Path(__file__).parent / 'output' / 'day5a.png')
-        sea.img.resize((100,100)).save(Path(__file__).parent / 'output' / 'day5athumb.png')
+        viz(sea)
     return sum(count.values())
 
 ######## Part 2 ##########
@@ -54,8 +50,7 @@ def p2(expect=15463, viz=None):
     count.pop(0)
     count.pop(1)
     if viz:
-        sea.save(Path(__file__).parent / 'output' / 'day5b.png')
-        sea.img.resize((100,100)).save(Path(__file__).parent / 'output' / 'day5bthumb.png')
+        viz(sea)
     return sum(count.values())
 
 ######### Main ###########
@@ -64,5 +59,6 @@ def main():
 
 if __name__ == "__main__":
     main()
-    p1(viz=True)
-    p2(viz=True)
+    from visualizations import viz5a, viz5b
+    p1(viz=viz5a)
+    p2(viz=viz5b)

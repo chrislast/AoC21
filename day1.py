@@ -1,25 +1,13 @@
 # import our helpers
 from utils import load, show, day, Map, TRACE
-import yaml
-import PIL
-from pathlib import Path
+
 ####### GLOBALS #########
 
 # load todays input data as a docstring
-DATA = load(day(__file__))
+DATA = load(day(__file__)).splitlines()
 
 # parse the input
-depths = [int(d) for d in DATA.splitlines()]
-
-def viz():
-    # visualize the depth map
-    div = max(depths)//100 + 1
-    viz = Map(["~"*(x//div) for x in depths])
-    viz.setcolour("~",(0,128,128))
-    viz.img = viz.img.resize((100, 100))
-    viz.img = viz.img.transpose(PIL.Image.TRANSPOSE)
-    viz.add_a_submarine(15,5)
-    viz.img.save(Path(__file__).parent / 'output' / 'day1.png')
+depths = [int(d) for d in DATA]
 
 ######## Part 1 ##########
 def p1(expect=1655):
@@ -37,4 +25,5 @@ def main():
 
 if __name__ == "__main__":
     main()
-    viz()
+    from visualizations import viz1
+    viz1(depths)

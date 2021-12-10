@@ -18,6 +18,19 @@ $ py day<n>.py
 
 * An objective this year is to provide visualizations for all solutions using PIL (png/gif) and matplotlib
 * [utils.py](./utils.py) - contains general purpose helper functions and test functions
+* [visualizations.py](./visualizations.py) - contains code for generating visualizations and is not required to solve any of the problems, putting them all here helps keep the solutions clean
+* Difficulty ratings are my opinion at the end and not necessarily indicative of how long it took me to solve them..
+
+	1. easy enough to do in the interpreter
+	2. best to use an editor
+	3. best solution is not obvious
+	4. read, understand, think..., do
+	5. read, understand, think..., repeat, do
+	6. this could take a while to implement and/or debug ([Intcode computing](https://adventofcode.com/2019/day/17#part2))
+	7. it's going to be a long night ([recursive maze mapping](https://adventofcode.com/2019/day/20#part2))
+	8. one for the weekend ([dynamic maze searching](https://adventofcode.com/2019/day/18#part2))
+	9. one for January ([goblins vs elves](https://adventofcode.com/2018/day/15#part2))
+	10. one for someone else ([chinese remainder theorem](https://adventofcode.com/2020/day/13#part2))
 
 ## Diary
 

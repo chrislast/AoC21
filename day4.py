@@ -1,15 +1,15 @@
 # import our helpers
-from utils import load, show, day, TRACE, Map, Path
+from utils import load, show, day, TRACE, Map
+from pathlib import Path
 
 ####### GLOBALS #########
 
 # load todays input data as a docstring
-DATA = load(day(__file__))
+DATA = load(day(__file__)).splitlines()
 
 # parse the input
-PARSED = DATA.splitlines()
-NUMBERS = list(map(int,PARSED[0].split(",")))
-CARDS = [PARSED[n:n+5] for n in range(2, len(PARSED), 6)]
+NUMBERS = list(map(int,DATA[0].split(",")))
+CARDS = [DATA[n:n+5] for n in range(2, len(DATA), 6)]
 MAP = Map([list(map(int,' '.join(x).split())) for x in CARDS], output_size=(100,100))
 MAP.setcolour(255,(0,0,0))
 

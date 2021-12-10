@@ -1,8 +1,6 @@
 # import our helpers
-from utils import load, show, day, TRACE, Map, Path
+from utils import load, show, day, TRACE, Map
 from collections import Counter
-from PIL import Image
-from matplotlib import pyplot as plt
 
 ####### GLOBALS #########
 
@@ -68,20 +66,7 @@ def p2(expect=99763899, viz=None):
 def main():
     show(p1, p2)
 
-def viz2(scatter):
-    fig, ax = plt.subplots()
-    xdata = [_[0] for _ in scatter]
-    ydata = [_[1] for _ in scatter]
-    ax.plot(xdata, ydata)
-    ax.set_xlabel("crab submarine position")
-    ax.set_ylabel("fuel used")
-    fig.set_tight_layout(True)
-    full = Path(__file__).parent / 'output' / 'day7b.png'
-    fig.savefig(full)
-    img = Image.open(full)
-    img.resize((100,100)).save(Path(__file__).parent / 'output' / 'day7bthumb.png')
-
 if __name__ == "__main__":
     main()
-    #p1(viz=viz1)
-    p2(viz=viz2)
+    from visualizations import viz7b
+    p2(viz=viz7b)
