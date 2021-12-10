@@ -23,43 +23,40 @@ def trim(txt):
             return txt
         txt = edited
 
-def syntax_checker(txt):
-    """return a non-zero syntax checker score for corrupted lines"""
-    for char in txt:
-        if char in ERRVAL:
-            return ERRVAL[char]
-    return 0
-
 def p1(expect=399153, viz=None):
-    """return the sum of all the syntax checker scores"""
-    return sum([syntax_checker(trim(line)) for line in DATA])
+    scores = []
+    for line in DATA:
+        trimmed = trim(line)
+        for char in trimmed:
+            if char in ERRVAL:
+                scores.append(ERRVAL[char])
+                break
+    return sum(scores)
 
 ######## Part 2 ##########
 # line completer scores
 COMPVAL = {")": 1, "]": 2, "}": 3, ">": 4}
 
-def completer(txt):
-    """return a non-zero completer score for incomplete lines"""
-    # find and discard corrupted strings
-    for char in txt:
-        if char in ERRVAL:
-            return 0
-    # reverse the string and make opens into closes
-    txt = txt[::-1].replace("{","}").replace("[","]").replace("<",">").replace("(",")")
-    # calculate the score
-    acc = 0
-    for char in txt:
-        acc *= 5
-        acc += COMPVAL[char]
-    return acc
-
 def p2(expect=2995077699, viz=None):
-    # calculate completer score for each line
-    scores = [completer(trim(line)) for line in DATA]
-    # remove corrupted lines and sort
-    completed = [_ for _ in sorted(scores) if _]
+    # calculate completer score for each incomplete line
+    scores = []
+    for line in DATA:
+        txt = trim(line)
+        # find and discard corrupted strings
+        if any([char in txt for char in ERRVAL]):
+            continue
+        # reverse the string and make opens into closes
+        txt = txt[::-1].replace("{","}").replace("[","]").replace("<",">").replace("(",")")
+        # calculate the score
+        acc = 0
+        for char in txt:
+            acc *= 5
+            acc += COMPVAL[char]
+        scores.append(acc)
+
     # return the middle score
-    return completed[len(completed)//2]
+    scores = sorted(scores)
+    return scores[len(scores)//2]
 
 ######### Main ###########
 def main():
