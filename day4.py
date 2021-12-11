@@ -10,7 +10,7 @@ DATA = load(day(__file__)).splitlines()
 # parse the input
 NUMBERS = list(map(int,DATA[0].split(",")))
 CARDS = [DATA[n:n+5] for n in range(2, len(DATA), 6)]
-MAP = Map([list(map(int,' '.join(x).split())) for x in CARDS], output_size=(100,100))
+MAP = Map([list(map(int,' '.join(x).split())) for x in CARDS])
 MAP.setcolour(255,(0,0,0))
 
 ######## Part 1 ##########

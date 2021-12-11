@@ -22,5 +22,5 @@ if (Test-Path -Path "${SCRIPT_DIR}/${VENV}") {
     }
 
     # run tests
-    py utils.py
+    py test.py
 }

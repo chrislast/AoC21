@@ -37,12 +37,9 @@ def viz3a(counters):
     ax.set_xticks(range(0,12))
     ax.set_yticks(range(450,560,10))
     ax.legend()
-    full = Path(__file__).parent / 'output' / 'day3a.png'
-    thumb = full.parent / 'day3athumb.png'
+
     fig.set_tight_layout(True)
-    fig.savefig(full)
-    img = Image.open(full)
-    img.resize((100,100)).save(thumb)
+    fig.savefig(Path(__file__).parent / 'output' / 'day3a.png')
 
 def viz3b(counters):
     """3d stacked bar graph"""
@@ -63,19 +60,13 @@ def viz3b(counters):
     ax.bar3d(x, y, z, width, depth, noughts, shade=True, label="0")
     ax.bar3d(x, y, noughts, width, depth, ones, shade=True, label="1")
     fig.set_tight_layout(True)
-    full = Path(__file__).parent / 'output' / 'day3b.png'
-    thumb = full.parent / 'day3bthumb.png'
-    fig.savefig(full)
-    img = Image.open(full)
-    img.resize((100,100)).save(thumb)
+    fig.savefig(Path(__file__).parent / 'output' / 'day3b.png')
 
 def viz5a(sea):
     sea.save(Path(__file__).parent / 'output' / 'day5a.png')
-    sea.img.resize((100,100)).save(Path(__file__).parent / 'output' / 'day5athumb.png')
 
 def viz5b(sea):
     sea.save(Path(__file__).parent / 'output' / 'day5b.png')
-    sea.img.resize((100,100)).save(Path(__file__).parent / 'output' / 'day5bthumb.png')
 
 def viz6a(lanternfish):
     """stacked bar graph"""
@@ -91,12 +82,9 @@ def viz6a(lanternfish):
     ax.set_xlabel("days to next birth")
     ax.set_xticks(range(9))
     ax.legend()
-    full = Path(__file__).parent / 'output' / 'day6a.png'
-    thumb = full.parent / 'day6athumb.png'
     fig.set_tight_layout(True)
-    fig.savefig(full)
-    img = Image.open(full)
-    img.resize((100,100)).save(thumb)
+    fig.savefig(Path(__file__).parent / 'output' / 'day6a.png')
+
 
 def viz6b(population):
     """stacked bar graph"""
@@ -112,12 +100,8 @@ def viz6b(population):
     ax.set_xlabel("days to next birth")
     ax.set_xticks(range(9))
     ax.legend()
-    full = Path(__file__).parent / 'output' / 'day6b.png'
-    thumb = full.parent / 'day6bthumb.png'
     fig.set_tight_layout(True)
-    fig.savefig(full)
-    img = Image.open(full)
-    img.resize((100,100)).save(thumb)
+    fig.savefig(Path(__file__).parent / 'output' / 'day6b.png')
 
 def viz7b(scatter):
     fig, ax = plt.subplots()
@@ -127,10 +111,7 @@ def viz7b(scatter):
     ax.set_xlabel("crab submarine position")
     ax.set_ylabel("fuel used")
     fig.set_tight_layout(True)
-    full = Path(__file__).parent / 'output' / 'day7b.png'
-    fig.savefig(full)
-    img = Image.open(full)
-    img.resize((100,100)).save(Path(__file__).parent / 'output' / 'day7bthumb.png')
+    fig.savefig(Path(__file__).parent / 'output' / 'day7b.png')
 
 def viz9a(func, seafloor):
     for val in "0123456789":
@@ -155,10 +136,15 @@ def viz9a(func, seafloor):
     img = Image.open(full)
     cropped = img.crop((290,280,1000,650))
     cropped.save(Path(__file__).parent / 'output' / 'day9a2.png')
-    cropped.resize((100,52)).save(Path(__file__).parent / 'output' / 'day9a2thumb.png')
 
 def viz9b(func, seafloor):
     seafloor.setcolour(255, (0, 255, 255))
     func(viz=True)
-    seafloor.img.resize((100,100)).save(Path(__file__).parent / 'output' / 'day9bthumb.png')
-    seafloor.savegif(Path(__file__).parent / 'output' / 'day9b.gif', duration=5)
+    seafloor.savegif(Path(__file__).parent / 'output' / 'day9b.gif', duration=5, loop=0)
+
+def viz11(func, cave, outfile):
+    for _ in range(1,10):
+        cave.setcolour(_,(_*12,_*12,_*12))
+    cave.setcolour(0,(255,255,255))
+    func(viz=True)
+    cave.savegif(outfile, loop=0)

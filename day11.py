@@ -65,14 +65,8 @@ def main():
 
 if __name__ == "__main__":
     main()
-    for _ in range(1,10):
-        MAP.setcolour(_,(_*6,_*6,_*6))
-    MAP.setcolour(0,(255,255,255))
-    p1(viz=True)
-    MAP.savegif(Path(__file__).parent / 'output' / 'day11a.gif')
+    from visualizations import viz11
+    from pathlib import Path
+    viz11(p1, MAP, Path(__file__).parent / 'output' / 'day11a.gif')
     MAP = Map(PARSED) # reset map
-    for _ in range(1,10):
-        MAP.setcolour(_,(_*6,_*6,_*6))
-    MAP.setcolour(0,(255,255,255))
-    p2(viz=True)
-    MAP.savegif(Path(__file__).parent / 'output' / 'day11b.gif')
+    viz11(p2, MAP, Path(__file__).parent / 'output' / 'day11b.gif')

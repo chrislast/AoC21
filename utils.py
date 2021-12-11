@@ -1,11 +1,16 @@
 from pathlib import Path
 import pdb
 import time
-
-## OLD STUFF
-
+from types import SimpleNamespace
 import random
 from PIL import Image
+
+TESTS = SimpleNamespace(
+    FAILED = 0,
+    PASSED = 0,
+    EXECUTED = 0,
+    ERRORS = 0,
+    SKIPPED = 0)
 
 class Map:
     """
@@ -90,8 +95,8 @@ class Map:
     def addtogif(self):
         self.gif.append(self.resized())
 
-    def savegif(self, fname, *, duration=100, loop=1, optimize=True, save_all=True):
-        self.gif[0].save(fname, append_images=self.gif[1:], save_all=save_all, duration=duration, loop=loop, palette=self.palette, optimize=optimize)
+    def savegif(self, fname, *, save_all=True, **kwargs):
+        self.gif[0].save(fname, append_images=self.gif[1:], save_all=save_all, palette=self.palette, **kwargs)
 
         ##
         #
@@ -126,29 +131,6 @@ def day(ospath):
     n = int(Path(ospath).stem[3:])
     return n
 
-import importlib
-import traceback
-from pathlib import Path
-from types import SimpleNamespace
-import time
-
-TESTS = SimpleNamespace(
-    FAILED = 0,
-    PASSED = 0,
-    EXECUTED = 0,
-    ERRORS = 0,
-    SKIPPED = 0)
-
-REPORT = """
-###### Totals #######
-
-EXECUTED = {}
-PASSED = {}
-FAILED = {}
-ERRORS = {}
-SKIPPED = {}
-"""
-
 def show(*funcs):
     part = 1
     for func in funcs:
@@ -176,27 +158,3 @@ def show(*funcs):
         if part==2:
             print("")
         part += 1
-
-def test():
-    # import each module and run it's tests
-    for n in range(1,26):
-        module_name = f"day{n}"
-        if (Path(__file__).parent / f"{module_name}.py").is_file():
-            try:
-                print(f"\n####### Day {n} #######\n")
-                mod = importlib.import_module(module_name)
-                mod.main()
-            except:
-                TESTS.ERRORS += 1
-                traceback.print_exc()
-
-    # print test report
-    print(REPORT.format(
-        TESTS.EXECUTED,
-        TESTS.PASSED,
-        TESTS.FAILED,
-        TESTS.ERRORS,
-        TESTS.SKIPPED))
-
-if __name__ == "__main__":
-    test()
