@@ -54,7 +54,8 @@ day9 [🌐](https://adventofcode.com/2021/day/9)[💾](./day9.py)    | 1    | [!
 day9 [🌐](https://adventofcode.com/2021/day/9)[💾](./day9.py)    | 2    | [![](./output/day9bthumb.png)](./output/day9b.gif) | 4/10 | Smoke Basin - used a breadth first search to fill each basin and return basin sizes, the animated gif behind the thumbnail takes *ages* if it ignores the 5ms frame duration!
 day10 [🌐](https://adventofcode.com/2021/day/10)[💾](./day10.py) | 1    |  | 3/10 | Syntax Scoring - I initially blundered into a regex trap to search for invalid characters and took far too long to realise the solution was much simpler
 day10 [🌐](https://adventofcode.com/2021/day/10)[💾](./day10.py) | 2    |  | 2/10 | Syntax Scoring - once I'd done part 1, I could reuse most of it to make part 2 easy
-day11 [🌐](https://adventofcode.com/2021/day/11)[💾](./day11.py) |      |  |  | 
+day11 [🌐](https://adventofcode.com/2021/day/11)[💾](./day11.py) | 1    | [![](./output/day11a.gif)](./output/day11a.gif) | 4/10 | 
+day11 [🌐](https://adventofcode.com/2021/day/11)[💾](./day11.py) | 2    | [![](./output/day11b.gif)](./output/day11b.gif) | 2/10 | 
 day12 [🌐](https://adventofcode.com/2021/day/12)[💾](./day12.py) |      |  |  | 
 day13 [🌐](https://adventofcode.com/2021/day/13)[💾](./day13.py) |      |  |  | 
 day14 [🌐](https://adventofcode.com/2021/day/14)[💾](./day14.py) |      |  |  | 
