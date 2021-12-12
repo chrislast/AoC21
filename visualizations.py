@@ -140,11 +140,11 @@ def viz9a(func, seafloor):
 def viz9b(func, seafloor):
     seafloor.setcolour(255, (0, 255, 255))
     func(viz=True)
-    seafloor.savegif(Path(__file__).parent / 'output' / 'day9b.gif', duration=5, loop=0)
+    seafloor.savegif(Path(__file__).parent / 'output' / 'day9b.gif', duration=5)
 
 def viz11(func, cave, outfile):
     for _ in range(1,10):
         cave.setcolour(_,(_*12,_*12,_*12))
     cave.setcolour(0,(255,255,255))
     func(viz=True)
-    cave.savegif(outfile, loop=0)
+    cave.savegif(outfile)

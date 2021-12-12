@@ -56,7 +56,8 @@ day10 [🌐](https://adventofcode.com/2021/day/10)[💾](./day10.py) | 1    |   
 day10 [🌐](https://adventofcode.com/2021/day/10)[💾](./day10.py) | 2    |                                                 | 2/10 | Syntax Scoring #2 - once I'd done part 1, I could reuse most of it to make part 2 easy
 day11 [🌐](https://adventofcode.com/2021/day/11)[💾](./day11.py) | 1    | [![](./output/day11a.gif)](./output/day11a.gif) | 4/10 | Dumbo Octopus #1 - Used a processing queue similar to basin filling to update the octopi and obviously had to animate it
 day11 [🌐](https://adventofcode.com/2021/day/11)[💾](./day11.py) | 2    | [![](./output/day11b.gif)](./output/day11b.gif) | 2/10 | Dumbo Octopus #2 - thankfully it didn't take long to synchronize, so the only work was to refactor octopus updates in part1 solution for reuse in part 2
-day12 [🌐](https://adventofcode.com/2021/day/12)[💾](./day12.py) |      |  |  | 
+day12 [🌐](https://adventofcode.com/2021/day/12)[💾](./day12.py) | 1    |                                                 | 4/10 | Passage Pathing #1 - I briefly feared this could be a network problem and was relieved to see it was just recursion with no difficult infinite (2 large caves connected) cases and well below Pythons 1000 recursion limit
+day12 [🌐](https://adventofcode.com/2021/day/12)[💾](./day12.py) | 2    |                                                 | 4/10 | Passage Pathing #2 - Slightly trickier as it adds more cases, but the problem solving was mostly done in part 1, while it pained me to destroy the brevity of my part 1 recursive function, it satisfied me more to make it reusable in both parts
 day13 [🌐](https://adventofcode.com/2021/day/13)[💾](./day13.py) |      |  |  | 
 day14 [🌐](https://adventofcode.com/2021/day/14)[💾](./day14.py) |      |  |  | 
 day15 [🌐](https://adventofcode.com/2021/day/15)[💾](./day15.py) |      |  |  | 
