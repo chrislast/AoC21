@@ -9,7 +9,7 @@ DATA = load(day(__file__)).splitlines()
 
 ######## Part 1 ##########
 def mapper(diagonals=False):
-    sea = Map([[0]*1000]*1000)
+    sea = [[0]*1000 for _ in range(1000)]
     for line in DATA:
         start, stop = line.split()[::2]
         x1, y1 = map(int,start.split(","))
@@ -31,26 +31,24 @@ def mapper(diagonals=False):
         # zip x,y values together and update map
         if x1==x2 or y1==y2 or diagonals:
             for x, y in zip(xr, yr):
-                sea.set((x,y), sea.get((x,y))+1)
+                sea[y][x] += 1
     return sea
 
 def p1(expect=5698, viz=None):
     sea = mapper(diagonals=False)
-    count = dict(Counter(sea.img.getdata()))
-    count.pop(0)
-    count.pop(1)
+    count = dict(Counter([col for row in sea for col in row]))
+    count[0] = count[1] = 0
     if viz:
-        viz(sea)
+        viz(Map(sea))
     return sum(count.values())
 
 ######## Part 2 ##########
 def p2(expect=15463, viz=None):
     sea = mapper(diagonals=True)
-    count = dict(Counter(sea.img.getdata()))
-    count.pop(0)
-    count.pop(1)
+    count = dict(Counter([col for row in sea for col in row]))
+    count[0] = count[1] = 0
     if viz:
-        viz(sea)
+        viz(Map(sea))
     return sum(count.values())
 
 ######### Main ###########
