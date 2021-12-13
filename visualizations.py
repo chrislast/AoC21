@@ -148,3 +148,11 @@ def viz11(func, cave, outfile):
     cave.setcolour(0,(255,255,255))
     func(viz=True)
     cave.savegif(outfile)
+
+def viz13b(dots):
+    # pad image 40*6 image to make it readable
+    m=Map([[0]*42]*8)
+    for dot in dots:
+        # offset dot position to keep 1 pixel margin
+        m.set((dot[0]+1,dot[1]+1),1)
+    m.save(Path(__file__).parent / 'output' / 'day13b.png')
