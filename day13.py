@@ -1,31 +1,11 @@
 # import our helpers
-from utils import load, show, day, TRACE, Map
+from utils import load, show, day, TRACE, Map, decode4x6font
 
 ####### GLOBALS #########
 
 # load todays input data as a docstring
 DATA = load(day(__file__)).splitlines()
-xDATA = """6,10
-0,14
-9,10
-0,3
-10,4
-4,11
-6,0
-6,12
-4,1
-0,13
-10,12
-3,4
-3,0
-8,4
-1,10
-2,14
-8,10
-9,0
-
-fold along y=7
-fold along x=5""".splitlines()
+# Parse input
 FOLDS = [_ for _ in DATA if "f" in _] # fold along x=655
 DOTS = {tuple(map(int,_.split(','))) for _ in DATA if ',' in _} # 1277,347
 
@@ -55,7 +35,7 @@ def p2(expect="AHPRPAUZ", viz=None):
         dots = fold(axis,val,dots)
     if viz:
         viz(dots)
-    return "AHPRPAUZ"
+    return decode4x6font(dots)
 
 
 ######### Main ###########

@@ -4,6 +4,7 @@ import time
 from types import SimpleNamespace
 import random
 from PIL import Image
+import numpy as np
 
 TESTS = SimpleNamespace(
     FAILED = 0,
@@ -158,3 +159,38 @@ def show(*funcs):
         if part==2:
             print("")
         part += 1
+
+# Made a good guess at codes for 4x6 fonts used by AoC but incomplete data means I can't test most of them
+ALPHA2CODE = dict(                                              # e.g.
+    A=0x699f99, B=0xe9e99e, C=0x698896, D=0xe9999e, E=0xf8f88f, #  0 1 1 0 = 0x6
+    F=0xf8e888, G=0x698b97, H=0x99f999, I=0xe4444e, J=0x711196, #  1 0 0 1 = 0x9
+    K=0x9aca99, L=0x88888f, M=0x9f9999, N=0x9db999, O=0x699996, #  1 0 0 1 = 0x9
+    P=0xe99e88, Q=0x6999a5, R=0xe99ea9, S=0x78611e, T=0xf44444, #  1 1 1 1 = 0xf
+    U=0x999996, V=0x999952, W=0x9999f9, X=0x996999, Y=0x995222, #  1 0 0 1 = 0x9
+    Z=0xf1248f)                                                 #  1 0 0 1 = 0x9 -> 0x699f99 = "A"
+# reverse lookup table to convert a code to a character
+CODE2ALPHA = {ALPHA2CODE[_]:_ for _ in ALPHA2CODE}
+# assign a unique bit to each part of 4x6 font
+ARRAY2CODE = np.array([1<<i for i in range(23,-1,-1)], dtype=int).reshape((6,4))
+
+def decode4x6font(dots):
+    txt = ""
+    xl=[x for x,y in dots]
+    yl=[y for x,y in dots]
+    arr=np.zeros((max(yl)-min(yl)+1,max(xl)-min(xl)+1), dtype=int)
+    for dot in dots:
+        arr[dot[::-1]] = 1
+    # align text to top right of array
+    line = arr[min(yl):,min(xl):]
+    # extract characters until the line is empty
+    while line.any():
+        char = line[:6,:4]
+        code = sum(sum(char*ARRAY2CODE))
+        try:
+            txt += CODE2ALPHA[code]
+        except KeyError as err:
+            print(f"Please add '{hex(code)}' ALPHA2CODE for:\n{char}")
+            txt += "?"
+        # cut the decoded character out of the array
+        line = line[:,5:]
+    return txt
