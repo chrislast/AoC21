@@ -149,6 +149,16 @@ def viz11(func, cave, outfile):
     func(viz=True)
     cave.savegif(outfile)
 
+def viz13a(dots):
+    # pad image 40*6 image to make it readable
+    xl=[x for x,y in dots]
+    yl=[y for x,y in dots]
+    arr=np.zeros((max(yl)+1,max(xl)+1), dtype=int)
+    for dot in dots:
+        arr[dot[::-1]] = 1
+    m=Map(arr)
+    m.save(Path(__file__).parent / 'output' / 'day13a.png')
+
 def viz13b(dots):
     # pad image 40*6 image to make it readable
     m=Map([[0]*42]*8)

@@ -24,7 +24,10 @@ def fold(axis, fold_at, points):
 def p1(expect=720, viz=None):
     axis = FOLDS[0][11]
     val = int(FOLDS[0][13:])
-    return len(fold(axis,val,DOTS))
+    dots = fold(axis,val,DOTS)
+    if viz:
+        viz(dots)
+    return len(dots)
 
 ######## Part 2 ##########
 def p2(expect="AHPRPAUZ", viz=None):
@@ -44,5 +47,6 @@ def main():
 
 if __name__ == "__main__":
     main()
-    from visualizations import viz13b
-    p2(viz=viz13b)
+    import visualizations
+    p1(viz=visualizations.viz13a)
+    p2(viz=visualizations.viz13b)

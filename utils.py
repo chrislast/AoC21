@@ -23,12 +23,16 @@ class Map:
         height = len(data)
         width = max([len(_) for _ in data])
         self.img = Image.new("P", (width,height))
-        for y in range(height):
-            for x in range(width):
-                try:
-                    self.set((x,y),data[y][x])
-                except IndexError:
-                    continue
+        if isinstance(data, np.ndarray):
+            data = np.array(data, dtype=int)
+            self.img.putdata(data.reshape(1,height*width)[0])
+        else:
+            for y in range(height):
+                for x in range(width):
+                    try:
+                        self.set((x,y),data[y][x])
+                    except IndexError:
+                        continue
         random.seed(colorseed)
         #             black  + white + 254 randomized RGB colours
         self.palette=[0,0,0] + [255,255,255] + [random.randint(0,255) for _ in range(254*3)]
