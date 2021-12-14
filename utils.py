@@ -156,7 +156,7 @@ def show(*funcs):
                 print(f"\n    Part {part}\n    PASS: {ret}\n    in {elapsed:.3f} seconds")
                 TESTS.PASSED += 1
             else:
-                print(f"\n    Part {part}\n    FAIL: {ret} expected {expect}")
+                print(f"\n    Part {part}\n    FAIL: {ret} expected {expect}\n    in {elapsed:.3f} seconds")
                 TESTS.FAILED += 1
         else:
             print(f"\n    Part {part}\n    {ret}\n    in {elapsed:.3f} seconds")
