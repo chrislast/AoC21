@@ -166,3 +166,19 @@ def viz13b(dots):
         # offset dot position to keep 1 pixel margin
         m.set((dot[0]+1,dot[1]+1),1)
     m.save(Path(__file__).parent / 'output' / 'day13b.png')
+
+def viz15a(route):
+    m=Map(np.zeros((100,100), dtype=int))
+    m.set((0,0), 255)
+    m.setcolour(255,(255,255,255))
+    for pos in route:
+        m.set(pos, 255)
+    m.save(Path(__file__).parent / 'output' / 'day15a.png')
+
+def viz15b(route):
+    m=Map(np.zeros((500,500), dtype=int))
+    m.set((0,0), 255)
+    m.setcolour(255,(255,255,255))
+    for pos in route:
+        m.set(pos, 255)
+    m.save(Path(__file__).parent / 'output' / 'day15b.png')
