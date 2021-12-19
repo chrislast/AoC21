@@ -32,7 +32,7 @@ def p1(expect=4005):
 ######## Part 2 ##########
 def p2(expect=2953):
     """runs in 30 minutes!!"""
-    # the biggest xvl not to overshoot target
+    # the biggest xvel not to overshoot target immediately
     biggestxvel = XMAX
     # find the smallest x velocity able to reach the target
     xvel = 1
@@ -45,7 +45,6 @@ def p2(expect=2953):
     # the smallest yvel that won't be below the target in a single step
     smallestyvel = YMIN
 
-    print((biggestyvel-smallestyvel)*(biggestxvel-smallestxvel))
     acc = 0
     for y in range(smallestyvel, biggestyvel+1):
         for x in range(smallestxvel, biggestxvel+1):

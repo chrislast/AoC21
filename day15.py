@@ -23,12 +23,36 @@ class RiskPoint:
         return self.risk < obj.risk
 
 ######## Part 1 ##########
+class DictQueue:
+    """Lowest priority first queue implemented as a dictionary of subqueues
+    keyed by cumulative priority.  Significantly quicker than sorting a single
+    list reqepatedly or even finding where to insert a node in a sorted list"""
+    def __init__(self):
+        self._queue = {}
+
+    def popleft(self):
+        lowest_risk = min(self._queue)
+        siblings = self._queue[lowest_risk]
+        point = siblings.pop(0)
+        if not siblings:
+            self._queue.pop(lowest_risk)
+        return point
+
+    def append(self, point):
+        risk = point.risk
+        riskqueue = self._queue.get(risk, [])
+        riskqueue.append(point)
+        self._queue[risk] = riskqueue
+
+    def __len__(self):
+        return len(self._queue)
+
 def find_lowest_risk_path(target, get_risk_fn):
-    queue = []
-    visited = set((0,0))
+    queue = DictQueue()
     queue.append(RiskPoint(risk=0, pos=(0,0), route=[]))
-    while queue:
-        node = queue.pop(0) # process least risky queue node
+    visited = set((0,0))
+    while len(queue):
+        node = queue.popleft() # process least risky node first
         if node.pos == target:
             break # path found
         xnode, ynode = node.pos
@@ -41,16 +65,7 @@ def find_lowest_risk_path(target, get_risk_fn):
                     risk=node.risk + get_risk_fn(pos),
                     pos=pos,
                     route=node.route.copy() + [pos])
-                # insert the new node into the queue before any riskier nodes
-                inserted = False
-                for idx, qnode in enumerate(queue):
-                    if qnode.risk > newnode.risk:
-                        queue.insert(idx, newnode)
-                        inserted = True
-                        break
-                if not inserted:
-                    queue.append(newnode)
-        # queue = sorted(queue) saved 50% of total execution time by replacing with insertion method above
+                queue.append(newnode)
     return node
 
 def p1risk(pos):
