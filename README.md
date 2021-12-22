@@ -75,8 +75,8 @@ day20 [🌐](https://adventofcode.com/2021/day/20)[💾](./day20.py) | 0.1s | [!
 &nbsp;                                                            | 10s | [![](./output/day20b.gif)](./output/day20b.gif) | 2/10 | Trench Map #2 - Simple after part 1, a slightly bigger border is needed and more loops, some light refactoring done to maximize reuse
 day21 [🌐](https://adventofcode.com/2021/day/21)[💾](./day21.py) | 0.0s | 🚫 | 4/10 | Dirac Dice #1 - My first thought for the dice was a generator and this worked well the rest was appropriate data structures and basic arithmetic
 &nbsp;                                                            |  |  |  | Dirac Dice #2 - I'm probably going to make a process queue, the runtime is a worry for ~786316482957123 simulated games though O(n3)?
-day22 [🌐](https://adventofcode.com/2021/day/22)[💾](./day22.py) |  |  |  | 
-&nbsp;                                                            |  |  |  | 
+day22 [🌐](https://adventofcode.com/2021/day/22)[💾](./day22.py) | 0.0s | 🛠 | 3/10 | Reactor Reboot #1 - Used numpy 3-d array and 3-d array slice setting and it just worked first time without trying test data.  Quick to implement and run if you know basics of numpy
+&nbsp;                                                            |  |  |  | Reactor Reboot #2 - I doubt numpy is going to handle a 200k * 200k * 200k cube :(
 day23 [🌐](https://adventofcode.com/2021/day/23)[💾](./day23.py) |  |  |  | 
 day24 [🌐](https://adventofcode.com/2021/day/24)[💾](./day24.py) |  |  |  | 
 day25 [🌐](https://adventofcode.com/2021/day/25)[💾](./day25.py) |  |  |  | 
