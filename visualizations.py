@@ -182,3 +182,17 @@ def viz15b(route):
     for pos in route:
         m.set(pos, 255)
     m.save(Path(__file__).parent / 'output' / 'day15b.png')
+
+def viz20a(maps):
+    gifmap = maps[0]
+    for m in maps[1::2]:
+        gifmap.img.putdata(m.img.getdata())
+        gifmap.addtogif()
+    gifmap.savegif(Path(__file__).parent / 'output' / 'day20a.gif')
+
+def viz20b(maps):
+    gifmap = maps[0]
+    for m in maps[1::2]:
+        gifmap.img.putdata(m.img.getdata())
+        gifmap.addtogif()
+    gifmap.savegif(Path(__file__).parent / 'output' / 'day20b.gif')

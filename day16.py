@@ -1,18 +1,11 @@
 # import our helpers
 from utils import load, show, day, TRACE
 from dataclasses import dataclass
-#import cProfile
 ####### GLOBALS #########
 
 # load todays input data as a docstring
 DATA = load(day(__file__))
-# DATA = "D2FE28"
-# DATA = "38006F45291200"
-# DATA = "EE00D40C823060"
-# DATA = "8A004A801A8002F478"
-# DATA = "620080001611562C8802118E34"
-# DATA = "C0015000016115A2E0802F182340"
-# DATA = "A0016C880162017C3686B18A3D4780"
+
 # Parse input
 MSG = bin(int(DATA, 16))[2:] # convert hex text to binary text
 while len(MSG) & 3:
@@ -117,8 +110,4 @@ def main():
     show(p1,p2)
 
 if __name__ == "__main__":
-#    cProfile.run('main()')
     main()
-    # from visualizations import viz15a, viz15b
-    # p1(viz=viz15a)
-    # p2(viz=viz15b)
