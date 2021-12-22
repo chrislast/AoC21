@@ -73,8 +73,10 @@ day18 [🌐](https://adventofcode.com/2021/day/18)[💾](./day18.py) | 0.4s | �
 day19 [🌐](https://adventofcode.com/2021/day/19)[💾](./day19.py) |  |  |  | 
 day20 [🌐](https://adventofcode.com/2021/day/20)[💾](./day20.py) | 0.1s | [![](./output/day20a.gif)](./output/day20a.gif) | 4/10 | Trench Map #1 - Light relief compared with previous days. A litle bit of numpy 2D array processing, some thought as to how big the image will get and it's done.  Extra time to make visualisations
 &nbsp;                                                            | 10s | [![](./output/day20b.gif)](./output/day20b.gif) | 2/10 | Trench Map #2 - Simple after part 1, a slightly bigger border is needed and more loops, some light refactoring done to maximize reuse
-day21 [🌐](https://adventofcode.com/2021/day/21)[💾](./day21.py) |  |  |  | 
+day21 [🌐](https://adventofcode.com/2021/day/21)[💾](./day21.py) | 0.0s | 🚫 | 4/10 | Dirac Dice #1 - My first thought for the dice was a generator and this worked well the rest was appropriate data structures and basic arithmetic
+&nbsp;                                                            |  |  |  | Dirac Dice #2 - I'm probably going to make a process queue, the runtime is a worry for ~786316482957123 simulated games though O(n3)?
 day22 [🌐](https://adventofcode.com/2021/day/22)[💾](./day22.py) |  |  |  | 
+&nbsp;                                                            |  |  |  | 
 day23 [🌐](https://adventofcode.com/2021/day/23)[💾](./day23.py) |  |  |  | 
 day24 [🌐](https://adventofcode.com/2021/day/24)[💾](./day24.py) |  |  |  | 
 day25 [🌐](https://adventofcode.com/2021/day/25)[💾](./day25.py) |  |  |  | 
